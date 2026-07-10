@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dave Patton Site — Launch Instructions</title>
+  <meta name="robots" content="noindex">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f44;
+      --gold: #c8a86b;
+      --bg: #f7f6f3;
+      --card: #ffffff;
+      --border: #e2ddd5;
+      --text: #1a1a1a;
+      --muted: #666;
+      --green: #1a7a4a;
+      --green-bg: #edfaf3;
+      --yellow-bg: #fffbea;
+      --yellow-border: #e5c84a;
+      --red: #b91c1c;
+      --red-bg: #fef2f2;
+    }
+
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* ── TOP BAR ── */
+    .topbar { background: var(--navy); color: #fff; padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--gold); position: sticky; top: 0; z-index: 100; }
+    .topbar .logo { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+    .topbar .logo span { color: var(--gold); }
+    .topbar nav { display: flex; gap: 1.5rem; }
+    .topbar nav a { color: rgba(255,255,255,0.75); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+    .topbar nav a:hover { color: #fff; }
+
+    /* ── HERO BANNER ── */
+    .hero { background: var(--navy); color: #fff; padding: 3rem 2rem 2.5rem; text-align: center; }
+    .hero .eyebrow { color: var(--gold); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.75rem; }
+    .hero p { color: rgba(255,255,255,0.7); max-width: 620px; margin: 0 auto 1.5rem; }
+    .live-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,168,107,0.15); border: 1px solid var(--gold); border-radius: 100px; padding: 0.45rem 1.2rem; font-size: 0.85rem; color: var(--gold); }
+    .live-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* ── LAYOUT ── */
+    .layout { display: grid; grid-template-columns: 240px 1fr; gap: 0; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    @media (max-width: 780px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* ── SIDEBAR ── */
+    .sidebar { padding-right: 2rem; }
+    .sidebar-nav { position: sticky; top: 70px; }
+    .sidebar-nav h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+    .sidebar-nav a { display: block; font-size: 0.85rem; color: var(--muted); text-decoration: none; padding: 0.3rem 0; border-left: 2px solid transparent; padding-left: 0.75rem; margin-left: -0.75rem; transition: all 0.15s; }
+    .sidebar-nav a:hover { color: var(--navy); border-left-color: var(--gold); }
+    .sidebar-nav a.active { color: var(--navy); font-weight: 600; border-left-color: var(--gold); }
+    .sidebar-section { margin-bottom: 1.5rem; }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* ── SECTION CARDS ── */
+    .step-group { margin-bottom: 2.5rem; }
+    .step-group-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .phase-num { background: var(--navy); color: #fff; font-size: 0.7rem; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-group-header h2 { font-size: 1.2rem; color: var(--navy); margin: 0; }
+
+    .step { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+    .step-header { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 1.25rem; cursor: pointer; }
+    .step-num { background: var(--gold); color: var(--navy); font-size: 0.7rem; font-weight: 800; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+    .step-header h3 { font-size: 0.95rem; color: var(--navy); margin: 0 0 0.2rem; }
+    .step-header p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+    .step-body { padding: 0 1.25rem 1.25rem 3.25rem; border-top: 1px solid var(--border); display: none; }
+    .step.open .step-body { display: block; }
+    .step.open .step-header { background: #f9f8f6; }
+
+    /* ── BOXES ── */
+    .box { border-radius: 6px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.88rem; }
+    .box-green { background: var(--green-bg); border-left: 3px solid var(--green); }
+    .box-yellow { background: var(--yellow-bg); border-left: 3px solid var(--yellow-border); }
+    .box-red { background: var(--red-bg); border-left: 3px solid var(--red); }
+    .box strong { display: block; margin-bottom: 0.35rem; }
+
+    /* ── CODE ── */
+    code { font-family: 'SF Mono', 'Fira Code', monospace; background: #f0ede8; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.83em; color: #0f1f44; }
+    pre { background: #1a1a2e; color: #e2e8f0; border-radius: 6px; padding: 1rem 1.25rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.6; margin: 0.75rem 0; }
+    pre code { background: none; color: inherit; padding: 0; }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; padding: 0; margin: 0.75rem 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.3rem 0; font-size: 0.88rem; }
+    .checklist li::before { content: '☐'; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+    .checklist li.done::before { content: '✓'; color: var(--green); }
+
+    /* ── PLACEHOLDER TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+    th { background: var(--navy); color: #fff; padding: 0.5rem 0.75rem; text-align: left; font-size: 0.78rem; letter-spacing: 0.04em; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) { background: #faf9f7; }
+    td code { font-size: 0.8em; }
+
+    /* ── LINKS ── */
+    .url-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; margin: 0.5rem 0; font-size: 0.9rem; }
+    .url-card a { color: var(--navy); font-weight: 600; word-break: break-all; }
+    .url-card .label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; margin-left: 1rem; }
+
+    /* ── PROMPT BOX ── */
+    .prompt-box { background: #1a1a2e; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1rem 0; position: relative; }
+    .prompt-box .label { color: #c8a86b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .prompt-box pre { background: none; padding: 0; margin: 0; color: #e2e8f0; }
+    .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 3px; cursor: pointer; }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.78rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">Dave Patton <span>// Launch Guide</span></div>
+    <nav>
+      <a href="#phase1">Setup</a>
+      <a href="#phase2">Deploy</a>
+      <a href="#phase3">Domain</a>
+      <a href="#phase4">Google</a>
+      <a href="#phase5">Claude</a>
+      <a href="#placeholders">Placeholders</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="eyebrow">Handoff Package</p>
+    <h1>Dave Patton — Site Launch Guide</h1>
+    <p>Everything needed to take this backend from code to live, indexed, and handed off to Dave's own Claude. Work through the phases in order.</p>
+    <div style="margin-top:1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a class="live-pill" href="https://georgeshamblin.github.io/dave-patton-site/" target="_blank">Live Site Preview</a>
+      <a class="live-pill" style="color:#7dd3fc;border-color:#7dd3fc;" href="https://github.com/georgeshamblin/dave-patton-site" target="_blank">GitHub Repo</a>
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-nav">
+        <div class="sidebar-section">
+          <h4>Phase 1 — Setup</h4>
+          <a href="#fill-placeholders">Fill Placeholders</a>
+          <a href="#images">Prepare Images</a>
+          <a href="#domain">Register Domain</a>
+        </div>
+        <div class="sidebar-section">
+          <h4>Phase 2 — Deploy</h4>
+          <a href="#netlify">Netlify Deploy</a>
+          <a href="#connect-domain">Connect Domain</a>
+        </div>
+        <div class="sidebar-section">
+          <h4>Phase 3 — Verify</h4>
+          <a href="#verify">Validation Checklist</a>
+        </div>
+        <div class="sidebar-section">
+          <h4>Phase 4 — Google</h4>
+          <a href="#search-console">Search Console</a>
+        </div>
+        <div class="sidebar-section">
+          <h4>Phase 5 — Claude</h4>
+          <a href="#claude">Hand Off to Claude</a>
+        </div>
+        <div class="sidebar-section">
+          <h4>Reference</h4>
+          <a href="#placeholders">All Placeholders</a>
+          <a href="#tools">Quick Links</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+      <!-- ════ PHASE 1 ════ -->
+      <div class="step-group" id="phase1">
+        <div class="step-group-header">
+          <div class="phase-num">1</div>
+          <h2>Setup — Fill In &amp; Prepare (60 min)</h2>
+        </div>
+
+        <div class="step open" id="fill-placeholders">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Fill in all placeholders</h3>
+              <p>Open the files and replace every bracketed tag with Dave's real info</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="box box-yellow">
+              <strong>Files to edit:</strong>
+              index.html &nbsp;|&nbsp; schema/person.jsonld &nbsp;|&nbsp; schema/faq.jsonld &nbsp;|&nbsp; meta/meta-bank.html &nbsp;|&nbsp; sitemap.xml &nbsp;|&nbsp; llms.txt
+            </div>
+            <p style="font-size:0.88rem;margin:0.75rem 0;">Use Find &amp; Replace in any text editor (VS Code, TextEdit, Notepad). Replace every instance of each tag:</p>
+            <table>
+              <tr><th>Placeholder</th><th>What to Put Here</th><th>Where to Get It</th></tr>
+              <tr><td><code>[PHONE]</code></td><td>Dave's phone number</td><td>Dave directly</td></tr>
+              <tr><td><code>[EMAIL]</code></td><td>Dave's email address</td><td>Dave directly</td></tr>
+              <tr><td><code>[ZIP]</code></td><td>Hoover ZIP (likely 35244)</td><td>Confirm with Dave</td></tr>
+              <tr><td><code>[LAT]</code></td><td>33.3720 (verify below)</td><td>Google Maps right-click</td></tr>
+              <tr><td><code>[LNG]</code></td><td>-86.8103 (verify below)</td><td>Google Maps right-click</td></tr>
+              <tr><td><code>[DATE]</code></td><td>Today's date: YYYY-MM-DD</td><td>e.g. 2026-07-10</td></tr>
+              <tr><td><code>[LINKEDIN_URL]</code></td><td>Dave's LinkedIn profile</td><td>linkedin.com/in/davepatton</td></tr>
+              <tr><td><code>[FACEBOOK_URL]</code></td><td>Dave's Facebook page</td><td>facebook.com/...</td></tr>
+              <tr><td><code>[ZILLOW_PROFILE_URL]</code></td><td>Zillow agent page</td><td>zillow.com/agent/...</td></tr>
+              <tr><td><code>[REALTOR_COM_PROFILE_URL]</code></td><td>Realtor.com profile</td><td>realtor.com/agent/...</td></tr>
+            </table>
+            <div class="box box-green">
+              <strong>How to get exact GPS coordinates:</strong>
+              Go to maps.google.com → Search "1021 Brocks Gap Pkwy Hoover AL" → Right-click the pin → "What's here?" → Copy the coordinates shown.
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="images">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Prepare images</h3>
+              <p>Create an /images/ folder with these exact filenames</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <table>
+              <tr><th>Filename</th><th>Size</th><th>What It Is</th></tr>
+              <tr><td><code>dave-patton-headshot.jpg</code></td><td>Min 800×800</td><td>Dave's photo</td></tr>
+              <tr><td><code>logo.png</code></td><td>Any, transparent BG</td><td>Wordmark or logo</td></tr>
+              <tr><td><code>og-home.jpg</code></td><td>Exactly 1200×630</td><td>Social share image (homepage)</td></tr>
+              <tr><td><code>og-about.jpg</code></td><td>1200×630</td><td>Social share (about page)</td></tr>
+              <tr><td><code>og-services.jpg</code></td><td>1200×630</td><td>Social share (services)</td></tr>
+              <tr><td><code>og-senior.jpg</code></td><td>1200×630</td><td>Social share (senior transitions)</td></tr>
+              <tr><td><code>apple-touch-icon.png</code></td><td>180×180</td><td>iPhone bookmark icon</td></tr>
+              <tr><td><code>favicon.ico</code></td><td>32×32</td><td>Browser tab icon</td></tr>
+            </table>
+            <div class="box box-yellow">
+              <strong>Easy tools:</strong>
+              OG images (1200×630): <a href="https://canva.com" target="_blank" style="color:var(--navy);">canva.com</a> — use "Facebook Post" template, put Dave's name and tagline on it.<br>
+              Favicon: <a href="https://favicon.io" target="_blank" style="color:var(--navy);">favicon.io</a> — upload a photo or use initials "DP".
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="domain">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Register the domain</h3>
+              <p>~$15/year at Namecheap — get this first so you have the name locked</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <p style="font-size:0.88rem;">Try these in order (first available wins):</p>
+            <ul style="font-size:0.88rem;margin:0.75rem 0;">
+              <li><strong>davepattonrealty.com</strong></li>
+              <li>davepattonhomes.com</li>
+              <li>pattonrealtyhoover.com</li>
+              <li>davepattonre.com</li>
+            </ul>
+            <ol style="font-size:0.88rem;padding-left:1.5rem;margin:0.75rem 0;">
+              <li>Go to <a href="https://namecheap.com" target="_blank" style="color:var(--navy);">namecheap.com</a></li>
+              <li>Search your first choice → Add to cart → Checkout</li>
+              <li>Enable WhoisGuard privacy (free)</li>
+              <li><strong>Do NOT buy their website builder</strong> — domain only</li>
+              <li>Save your login credentials — you'll need them in Step 7</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ PHASE 2 ════ -->
+      <div class="step-group" id="phase2">
+        <div class="step-group-header">
+          <div class="phase-num">2</div>
+          <h2>Deploy (30 min)</h2>
+        </div>
+
+        <div class="step" id="netlify">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Deploy to Netlify (free)</h3>
+              <p>Drag-and-drop deploy — SSL included automatically</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="box box-yellow">
+              <strong>Before you deploy — folder structure must look like this:</strong>
+              The <code>index.html</code> file must be at the ROOT of the folder, not inside /pages/.
+            </div>
+            <pre><code>dave-patton-site/
+├── index.html          ← main site (copy from pages/index.html)
+├── instructions.html   ← this guide
+├── llms.txt
+├── robots.txt
+├── sitemap.xml
+├── images/
+│   ├── dave-patton-headshot.jpg
+│   ├── og-home.jpg
+│   └── ... (all image files)
+└── schema/
+    ├── person.jsonld
+    ├── faq.jsonld
+    └── breadcrumbs.jsonld</code></pre>
+            <ol style="font-size:0.88rem;padding-left:1.5rem;margin:0.75rem 0;">
+              <li>Create a free account at <a href="https://netlify.com" target="_blank" style="color:var(--navy);">netlify.com</a></li>
+              <li>Click <strong>"Add new site" → "Deploy manually"</strong></li>
+              <li>Drag your entire <code>dave-patton-site/</code> folder onto the upload box</li>
+              <li>Netlify gives you a random URL like <strong>quirky-name-123.netlify.app</strong></li>
+              <li>Click it — site should be live immediately</li>
+            </ol>
+            <div class="box box-green">
+              <strong>Verify these URLs work after deploy:</strong>
+              <ul style="margin-top:0.4rem;">
+                <li>yoursite.netlify.app/ → homepage loads</li>
+                <li>yoursite.netlify.app/llms.txt → shows plain text</li>
+                <li>yoursite.netlify.app/robots.txt → shows plain text</li>
+                <li>yoursite.netlify.app/sitemap.xml → shows XML</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="connect-domain">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">5</div>
+            <div>
+              <h3>Connect your custom domain + SSL</h3>
+              <p>Point davepattonrealty.com to Netlify — SSL is automatic</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <p style="font-size:0.88rem;font-weight:600;margin-bottom:0.75rem;">In Netlify dashboard:</p>
+            <ol style="font-size:0.88rem;padding-left:1.5rem;margin-bottom:1rem;">
+              <li>Go to your site → <strong>Domain management → Add custom domain</strong></li>
+              <li>Type your domain (e.g. davepattonrealty.com) → Verify</li>
+              <li>Netlify shows you nameservers — they look like: <code>dns1.p08.nsone.net</code></li>
+              <li>Copy all 4 nameservers</li>
+            </ol>
+            <p style="font-size:0.88rem;font-weight:600;margin-bottom:0.75rem;">In Namecheap dashboard:</p>
+            <ol style="font-size:0.88rem;padding-left:1.5rem;margin-bottom:1rem;">
+              <li>Log in → Domain List → Manage (your domain)</li>
+              <li>Nameservers → select <strong>"Custom DNS"</strong></li>
+              <li>Paste in Netlify's nameservers, one per line</li>
+              <li>Save</li>
+            </ol>
+            <div class="box box-yellow">
+              <strong>Wait time:</strong> DNS propagates in 5 minutes to 48 hours. Usually under 1 hour. Netlify auto-provisions a free SSL certificate once it detects propagation — the padlock will go green on its own.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ PHASE 3 ════ -->
+      <div class="step-group" id="phase3">
+        <div class="step-group-header">
+          <div class="phase-num">3</div>
+          <h2>Verify Everything (30 min)</h2>
+        </div>
+
+        <div class="step" id="verify">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">6</div>
+            <div>
+              <h3>Run the verification checklist</h3>
+              <p>Validate schema, meta, speed, and SSL before submitting to Google</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <ul class="checklist">
+              <li>Site loads at https://yourdomain.com (padlock shows)</li>
+              <li>https://yourdomain.com/llms.txt returns plain text</li>
+              <li>https://yourdomain.com/robots.txt returns plain text</li>
+              <li>https://yourdomain.com/sitemap.xml returns XML</li>
+              <li>All nav links work (no 404s)</li>
+              <li>Schema validation: <a href="https://validator.schema.org" target="_blank" style="color:var(--navy);">validator.schema.org</a> → paste URL → no errors</li>
+              <li>Rich results test: <a href="https://search.google.com/test/rich-results" target="_blank" style="color:var(--navy);">search.google.com/test/rich-results</a> → Person + FAQ detected</li>
+              <li>Meta preview: <a href="https://metatags.io" target="_blank" style="color:var(--navy);">metatags.io</a> → OG image shows correctly</li>
+              <li>PageSpeed: <a href="https://pagespeed.web.dev" target="_blank" style="color:var(--navy);">pagespeed.web.dev</a> → target 90+ mobile</li>
+            </ul>
+            <div class="box box-red">
+              <strong>If PageSpeed score is below 80:</strong> Images are too large. Compress them at <a href="https://squoosh.app" target="_blank" style="color:#b91c1c;">squoosh.app</a> before re-uploading.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ PHASE 4 ════ -->
+      <div class="step-group" id="phase4">
+        <div class="step-group-header">
+          <div class="phase-num">4</div>
+          <h2>Submit to Google (15 min)</h2>
+        </div>
+
+        <div class="step" id="search-console">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">7</div>
+            <div>
+              <h3>Google Search Console setup</h3>
+              <p>Verify ownership, submit sitemap, request indexing</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <ol style="font-size:0.88rem;padding-left:1.5rem;">
+              <li>Go to <a href="https://search.google.com/search-console" target="_blank" style="color:var(--navy);">search.google.com/search-console</a></li>
+              <li>Sign in (create a Google account for Dave if needed)</li>
+              <li>Click <strong>"Add property"</strong> → URL prefix → enter <code>https://yourdomain.com</code></li>
+              <li>Verification method: <strong>HTML tag</strong> → copy the meta tag
+                <pre><code>&lt;meta name="google-site-verification" content="YOUR_CODE_HERE" /&gt;</code></pre>
+                Paste it inside the <code>&lt;head&gt;</code> of index.html → redeploy to Netlify → click Verify
+              </li>
+              <li>Left sidebar → <strong>Sitemaps</strong> → enter <code>sitemap.xml</code> → Submit</li>
+              <li>Left sidebar → <strong>URL Inspection</strong> → type <code>/</code> → Request Indexing</li>
+              <li>Repeat Request Indexing for: <code>/about/</code>, <code>/services/</code>, <code>/senior-transitions/</code></li>
+            </ol>
+            <div class="box box-green">
+              <strong>Expected timeline:</strong> Google typically indexes the homepage within 1-7 days of sitemap submission. The CSHP schema and FAQ schema will start showing in rich results within 2-4 weeks.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ PHASE 5 ════ -->
+      <div class="step-group" id="phase5">
+        <div class="step-group-header">
+          <div class="phase-num">5</div>
+          <h2>Hand Off to Dave's Claude (20 min)</h2>
+        </div>
+
+        <div class="step" id="claude">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">8</div>
+            <div>
+              <h3>Set up Claude for ongoing site management</h3>
+              <p>Give Dave's Claude everything it needs to maintain and improve the site</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <p style="font-size:0.88rem;margin-bottom:1rem;">
+              Dave can use Claude (claude.ai) to manage content, write new pages, update the Home Report, and make edits. Give Claude this prompt to get started:
+            </p>
+
+            <div class="prompt-box">
+              <div class="label">Opening Prompt — paste this into Claude to initialize the project</div>
+              <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('init-prompt').innerText)">Copy</button>
+              <pre id="init-prompt">You are managing the website for Dave Patton, a Realtor® and Certified Senior Housing Professional (CSHP) in Hoover and Birmingham, Alabama.
+
+SITE CONTEXT:
+- Live URL: https://davepattonrealty.com
+- GitHub repo: https://github.com/georgeshamblin/dave-patton-site
+- Deployed via: Netlify (drag-and-drop or GitHub sync)
+- Tech stack: Static HTML + Schema.org structured data (no CMS, no framework)
+- Main file: index.html (served from repo root)
+
+WHO DAVE IS:
+- Realtor® and CSHP (one of only 2 in Alabama)
+- Specializes in senior housing transitions, downsizing, assisted living relocation
+- Operates under Patton Real Estate / KW Hoover (Keller Williams)
+- Office: 1021 Brocks Gap Pkwy, Hoover, AL
+- Serves: Hoover, Birmingham, Lake Wilborn, Stadium Trace Village, Abingdon
+- Background: Atlanta-born, Oglethorpe University grad, decades in consulting/TV
+- BNI Chapter President (Advisory Board), former Treasurer
+- Publishes monthly Home Report
+- Tone: warm, expert, reassuring — never corporate or salesy
+
+VOICE RULES:
+- Warm and approachable, not cold or transactional
+- Expert but never arrogant
+- Local and neighborhood-specific when possible
+- Avoid generic real estate language ("dream home", "luxury", "high-pressure")
+- Mention CSHP distinction naturally — it's a real differentiator
+
+SCHEMA RULES (critical — never break these):
+- Every page must have Person + RealEstateAgent JSON-LD in the head
+- FAQ sections must use FAQPage + Question + Answer schema
+- Service cards must have itemscope/itemtype="https://schema.org/Service"
+- Place mentions must have itemscope/itemtype="https://schema.org/Place"
+- Never remove or change the @id values in the JSON-LD
+
+WHAT YOU CAN HELP WITH:
+1. Writing new content for any page (About, Services, Senior Transitions, etc.)
+2. Adding monthly Home Report pages (/home-report/YYYY-MM/index.html)
+3. Adding testimonials with Review schema
+4. Updating placeholder text once Dave provides his real info
+5. Creating new subpages for specific communities (e.g. /lake-wilborn/)
+6. Editing meta descriptions and page titles for SEO
+7. Writing blog posts targeting local search terms
+
+ONGOING TASKS (monthly):
+- Add a new Home Report page at /home-report/YYYY-MM/ with Article schema
+- Update sitemap.xml lastmod dates for changed pages
+- Check Google Search Console for errors
+
+Ask me what you'd like to work on.</pre>
+            </div>
+
+            <p style="font-size:0.88rem;margin-top:1.25rem;margin-bottom:0.75rem;font-weight:600;">What Dave can ask Claude to do:</p>
+            <ul style="font-size:0.88rem;">
+              <li>"Write the About page content for me"</li>
+              <li>"Add a Home Report for July 2026 with these stats: [paste stats]"</li>
+              <li>"Add three client testimonials with review schema"</li>
+              <li>"Write a page about Senior Transitions with full schema markup"</li>
+              <li>"Update the meta description on the homepage to mention Lake Wilborn"</li>
+              <li>"Create a community page for Lake Wilborn neighborhood"</li>
+              <li>"Write a blog post targeting the search term 'downsizing in Hoover AL'"</li>
+            </ul>
+
+            <div class="box box-yellow" style="margin-top:1rem;">
+              <strong>How to update the live site after Claude edits a file:</strong>
+              1. Copy the updated HTML Claude provides<br>
+              2. Open the file in a text editor, paste the changes<br>
+              3. Go to Netlify → Deploys → drag the updated folder on<br>
+              — OR — if using GitHub: commit the change, Netlify auto-redeploys
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="step-num">9</div>
+            <div>
+              <h3>GitHub setup for easy ongoing updates (optional but recommended)</h3>
+              <p>Connect GitHub to Netlify so every file change auto-deploys</p>
+            </div>
+          </div>
+          <div class="step-body">
+            <ol style="font-size:0.88rem;padding-left:1.5rem;">
+              <li>Create a free account at <a href="https://github.com" target="_blank" style="color:var(--navy);">github.com</a></li>
+              <li>Fork this repo: <a href="https://github.com/georgeshamblin/dave-patton-site" target="_blank" style="color:var(--navy);">github.com/georgeshamblin/dave-patton-site</a> (click Fork button top-right)</li>
+              <li>In Netlify: <strong>Site settings → Build &amp; deploy → Link repository</strong></li>
+              <li>Connect GitHub → select your forked repo</li>
+              <li>Build command: leave blank. Publish directory: <code>/</code> (root)</li>
+              <li>From now on: edit files directly in GitHub (click pencil icon on any file), commit, Netlify auto-deploys in ~30 seconds</li>
+            </ol>
+            <div class="box box-green">
+              <strong>With this setup, the workflow is:</strong>
+              Claude writes new content → Dave pastes it into GitHub file editor → commits → site updates automatically. No FTP, no terminal, no dragging and dropping.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ════ REFERENCE — PLACEHOLDERS ════ -->
+      <div class="step-group" id="placeholders">
+        <div class="step-group-header">
+          <div class="phase-num">⊞</div>
+          <h2>All Placeholders Reference</h2>
+        </div>
+        <div class="step open">
+          <div class="step-header">
+            <div class="step-num">✓</div>
+            <div><h3>Complete list of every [PLACEHOLDER] in the codebase</h3></div>
+          </div>
+          <div class="step-body">
+            <table>
+              <tr><th>Tag</th><th>Value Needed</th><th>Files It Appears In</th></tr>
+              <tr><td><code>[PHONE]</code></td><td>Dave's phone number</td><td>index.html, schema/person.jsonld, meta/meta-bank.html</td></tr>
+              <tr><td><code>[EMAIL]</code></td><td>Dave's email</td><td>index.html, schema/person.jsonld, meta/meta-bank.html</td></tr>
+              <tr><td><code>[ZIP]</code></td><td>Hoover ZIP code</td><td>index.html, schema/person.jsonld</td></tr>
+              <tr><td><code>[LAT]</code></td><td>GPS latitude (33.3720)</td><td>schema/person.jsonld</td></tr>
+              <tr><td><code>[LNG]</code></td><td>GPS longitude (-86.8103)</td><td>schema/person.jsonld</td></tr>
+              <tr><td><code>[DATE]</code></td><td>Today YYYY-MM-DD</td><td>sitemap.xml</td></tr>
+              <tr><td><code>[LINKEDIN_URL]</code></td><td>LinkedIn profile URL</td><td>index.html, schema/person.jsonld</td></tr>
+              <tr><td><code>[FACEBOOK_URL]</code></td><td>Facebook page URL</td><td>index.html, schema/person.jsonld</td></tr>
+              <tr><td><code>[ZILLOW_PROFILE_URL]</code></td><td>Zillow agent page URL</td><td>index.html, schema/person.jsonld</td></tr>
+              <tr><td><code>[REALTOR_COM_PROFILE_URL]</code></td><td>Realtor.com agent URL</td><td>index.html, schema/person.jsonld</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ REFERENCE — LINKS ════ -->
+      <div class="step-group" id="tools">
+        <div class="step-group-header">
+          <div class="phase-num">⊞</div>
+          <h2>Quick Links</h2>
+        </div>
+        <div class="step open">
+          <div class="step-header">
+            <div class="step-num">✓</div>
+            <div><h3>Every tool and URL you'll need</h3></div>
+          </div>
+          <div class="step-body">
+            <div class="url-card"><a href="https://georgeshamblin.github.io/dave-patton-site/" target="_blank">github.io/dave-patton-site/</a><span class="label">Live Preview</span></div>
+            <div class="url-card"><a href="https://github.com/georgeshamblin/dave-patton-site" target="_blank">github.com/georgeshamblin/dave-patton-site</a><span class="label">GitHub Repo</span></div>
+            <div class="url-card"><a href="https://netlify.com" target="_blank">netlify.com</a><span class="label">Hosting (free)</span></div>
+            <div class="url-card"><a href="https://namecheap.com" target="_blank">namecheap.com</a><span class="label">Domain registrar</span></div>
+            <div class="url-card"><a href="https://validator.schema.org" target="_blank">validator.schema.org</a><span class="label">Schema validator</span></div>
+            <div class="url-card"><a href="https://search.google.com/test/rich-results" target="_blank">search.google.com/test/rich-results</a><span class="label">Rich results test</span></div>
+            <div class="url-card"><a href="https://metatags.io" target="_blank">metatags.io</a><span class="label">OG meta preview</span></div>
+            <div class="url-card"><a href="https://pagespeed.web.dev" target="_blank">pagespeed.web.dev</a><span class="label">Page speed test</span></div>
+            <div class="url-card"><a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a><span class="label">Google Search Console</span></div>
+            <div class="url-card"><a href="https://canva.com" target="_blank">canva.com</a><span class="label">OG image creation (free)</span></div>
+            <div class="url-card"><a href="https://favicon.io" target="_blank">favicon.io</a><span class="label">Favicon generator (free)</span></div>
+            <div class="url-card"><a href="https://squoosh.app" target="_blank">squoosh.app</a><span class="label">Image compression (free)</span></div>
+            <div class="url-card"><a href="https://claude.ai" target="_blank">claude.ai</a><span class="label">Claude — ongoing site management</span></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    Built for Dave Patton Real Estate &nbsp;|&nbsp; Repo: <a href="https://github.com/georgeshamblin/dave-patton-site">github.com/georgeshamblin/dave-patton-site</a>
+  </footer>
+
+  <script>
+    // Active sidebar link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.sidebar-nav a[href="#${e.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

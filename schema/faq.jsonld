@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Dave Patton Real Estate — Frequently Asked Questions",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Certified Senior Housing Professional (CSHP)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Certified Senior Housing Professional (CSHP) is a real estate designation awarded by the Seniors Real Estate Institute to agents who have completed rigorous coursework and examinations in senior housing transitions, elder care coordination, and downsizing. Dave Patton is one of only two agents in the entire state of Alabama to hold this designation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Dave Patton specialize only in senior real estate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Dave serves the full residential market across Hoover and greater Birmingham, Alabama. However, his deepest expertise, professional certifications, and personal mission center on seniors and senior housing transitions — helping older adults downsize, move to assisted living, or transition to family caregiver arrangements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas does Dave Patton serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dave Patton serves the greater Birmingham and Hoover, Alabama area, with hyper-local expertise in communities including Lake Wilborn, Stadium Trace Village, Abingdon, and surrounding neighborhoods."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Dave Patton help seniors and their families?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dave guides seniors and their adult children or caregivers through complex real estate transitions: selling a family home of many decades, coordinating with assisted living timelines, managing estate-related property decisions, and ensuring the process is handled with patience, dignity, and transparency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the monthly Home Report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dave publishes a monthly Home Report that covers local real estate market statistics, community news, area businesses, and neighborhood events for the Hoover and Birmingham communities he serves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Dave offer seminars or educational events?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Dave leads in-person seminars and workshops for seniors, adult children, and family caregivers covering the real estate side of senior life transitions — what to expect, how to prepare, and how to make decisions with clarity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What brokerage does Dave Patton work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dave operates under a dual brand — Patton Real Estate and KW Hoover (Keller Williams) — out of his office at 1021 Brocks Gap Pkwy, Hoover, Alabama."
+      }
+    }
+  ]
+}

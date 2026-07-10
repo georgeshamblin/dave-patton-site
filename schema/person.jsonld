@@ -1,0 +1,234 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://davepattonrealty.com/#dave-patton",
+      "name": "Dave Patton",
+      "givenName": "Dave",
+      "familyName": "Patton",
+      "jobTitle": [
+        "Realtor®",
+        "Certified Senior Housing Professional (CSHP)"
+      ],
+      "description": "Dave Patton is a Realtor® and Certified Senior Housing Professional (CSHP) serving the greater Birmingham and Hoover, Alabama area. He is one of only two agents in the state of Alabama holding the CSHP designation from the Seniors Real Estate Institute, with a specialty in helping older adults and their families navigate senior housing transitions, downsizing, assisted living placements, and estate-related real estate decisions.",
+      "url": "https://davepattonrealty.com",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://davepattonrealty.com/images/dave-patton-headshot.jpg",
+        "width": 800,
+        "height": 800,
+        "caption": "Dave Patton, Realtor® and Certified Senior Housing Professional"
+      },
+      "telephone": "[PHONE]",
+      "email": "[EMAIL]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1021 Brocks Gap Pkwy",
+        "addressLocality": "Hoover",
+        "addressRegion": "AL",
+        "postalCode": "[ZIP]",
+        "addressCountry": "US"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Oglethorpe University",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA"
+      },
+      "knowsAbout": [
+        "Senior real estate transitions",
+        "Downsizing for seniors",
+        "Assisted living relocation",
+        "Estate real estate",
+        "Memory care relocation",
+        "Birmingham Alabama real estate",
+        "Hoover Alabama real estate",
+        "Lake Wilborn",
+        "Stadium Trace Village",
+        "Abingdon"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certified Senior Housing Professional (CSHP)",
+          "credentialCategory": "Professional Certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Seniors Real Estate Institute"
+          },
+          "description": "One of only two agents in the state of Alabama to earn this designation, requiring months of rigorous coursework and examination."
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Realtor®",
+          "credentialCategory": "Professional License",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "National Association of Realtors"
+          }
+        }
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "BNI (Business Network International)",
+          "roleName": "Member"
+        },
+        {
+          "@type": "Organization",
+          "name": "BNI Advisory Board",
+          "roleName": "President"
+        }
+      ],
+      "worksFor": [
+        {
+          "@type": "RealEstateAgent",
+          "@id": "https://davepattonrealty.com/#patton-real-estate",
+          "name": "Patton Real Estate"
+        },
+        {
+          "@type": "RealEstateAgent",
+          "@id": "https://davepattonrealty.com/#kw-hoover",
+          "name": "KW Hoover",
+          "parentOrganization": {
+            "@type": "Organization",
+            "name": "Keller Williams Realty"
+          }
+        }
+      ],
+      "sameAs": [
+        "[LINKEDIN_URL]",
+        "[FACEBOOK_URL]",
+        "[ZILLOW_PROFILE_URL]",
+        "[REALTOR_COM_PROFILE_URL]"
+      ]
+    },
+
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://davepattonrealty.com/#patton-real-estate",
+      "name": "Patton Real Estate",
+      "alternateName": "Dave Patton Real Estate",
+      "url": "https://davepattonrealty.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://davepattonrealty.com/images/logo.png"
+      },
+      "image": "https://davepattonrealty.com/images/office.jpg",
+      "description": "Patton Real Estate, affiliated with KW Hoover (Keller Williams), specializes in residential real estate and senior housing transitions in the greater Birmingham and Hoover, Alabama area. Led by Dave Patton, one of Alabama's only two Certified Senior Housing Professionals.",
+      "telephone": "[PHONE]",
+      "email": "[EMAIL]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1021 Brocks Gap Pkwy",
+        "addressLocality": "Hoover",
+        "addressRegion": "AL",
+        "postalCode": "[ZIP]",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "[LAT]",
+        "longitude": "[LNG]"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Hoover",
+          "containedInPlace": {"@type": "State", "name": "Alabama"}
+        },
+        {
+          "@type": "City",
+          "name": "Birmingham",
+          "containedInPlace": {"@type": "State", "name": "Alabama"}
+        },
+        {
+          "@type": "Place",
+          "name": "Lake Wilborn"
+        },
+        {
+          "@type": "Place",
+          "name": "Stadium Trace Village"
+        },
+        {
+          "@type": "Place",
+          "name": "Abingdon"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Real Estate Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Senior Downsizing & Right-Sizing",
+              "description": "Compassionate, full-service guidance for seniors transitioning out of long-term family homes, with dignity and minimal stress."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Assisted Living & Memory Care Relocation",
+              "description": "Coordinating real estate decisions with transitions into assisted living or memory care facilities."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Estate & Family Caregiver Real Estate",
+              "description": "Working alongside adult children, family caregivers, and estate executors to navigate property decisions."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Home Sales & Purchases",
+              "description": "Full-service residential real estate for buyers and sellers across Hoover and the greater Birmingham market."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Senior & Caregiver Educational Seminars",
+              "description": "In-person workshops and seminars designed to educate seniors, adult children, and caregivers on the real estate side of major life transitions."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hyper-Local Market Reports",
+              "description": "Monthly Home Report covering local market stats, community events, and neighborhood news for Hoover and Birmingham communities."
+            }
+          }
+        ]
+      },
+      "founder": {
+        "@id": "https://davepattonrealty.com/#dave-patton"
+      },
+      "employee": {
+        "@id": "https://davepattonrealty.com/#dave-patton"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Keller Williams Realty",
+        "url": "https://www.kw.com"
+      }
+    }
+  ]
+}
