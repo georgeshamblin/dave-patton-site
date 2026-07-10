@@ -1,9 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://davepattonrealty.com/sitemap.xml
-
-# Block admin/backend paths when CMS is added
-Disallow: /wp-admin/
-Disallow: /wp-login.php
-Disallow: /admin/
+# Update this Sitemap line once the real domain is registered:
+# Sitemap: https://davepattonrealty.com/sitemap.xml
+Sitemap: https://georgeshamblin.github.io/dave-patton-site/sitemap.xml

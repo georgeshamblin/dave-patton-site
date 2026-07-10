@@ -8,26 +8,23 @@
       "givenName": "Dave",
       "familyName": "Patton",
       "jobTitle": [
-        "Realtor®",
+        "Realtor\u00ae",
         "Certified Senior Housing Professional (CSHP)"
       ],
-      "description": "Dave Patton is a Realtor® and Certified Senior Housing Professional (CSHP) serving the greater Birmingham and Hoover, Alabama area. He is one of only two agents in the state of Alabama holding the CSHP designation from the Seniors Real Estate Institute, with a specialty in helping older adults and their families navigate senior housing transitions, downsizing, assisted living placements, and estate-related real estate decisions.",
+      "description": "Dave Patton is a Realtor\u00ae and Certified Senior Housing Professional (CSHP) serving the greater Birmingham and Hoover, Alabama area. He is one of only two agents in the state of Alabama holding the CSHP designation from the Seniors Real Estate Institute, with a specialty in helping older adults and their families navigate senior housing transitions, downsizing, assisted living placements, and estate-related real estate decisions.",
       "url": "https://davepattonrealty.com",
       "image": {
         "@type": "ImageObject",
         "url": "https://davepattonrealty.com/images/dave-patton-headshot.jpg",
         "width": 800,
         "height": 800,
-        "caption": "Dave Patton, Realtor® and Certified Senior Housing Professional"
+        "caption": "Dave Patton, Realtor\u00ae and Certified Senior Housing Professional"
       },
-      "telephone": "[PHONE]",
-      "email": "[EMAIL]",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1021 Brocks Gap Pkwy",
         "addressLocality": "Hoover",
         "addressRegion": "AL",
-        "postalCode": "[ZIP]",
         "addressCountry": "US"
       },
       "alumniOf": {
@@ -61,7 +58,7 @@
         },
         {
           "@type": "EducationalOccupationalCredential",
-          "name": "Realtor®",
+          "name": "Realtor\u00ae",
           "credentialCategory": "Professional License",
           "recognizedBy": {
             "@type": "Organization",
@@ -96,15 +93,8 @@
             "name": "Keller Williams Realty"
           }
         }
-      ],
-      "sameAs": [
-        "[LINKEDIN_URL]",
-        "[FACEBOOK_URL]",
-        "[ZILLOW_PROFILE_URL]",
-        "[REALTOR_COM_PROFILE_URL]"
       ]
     },
-
     {
       "@type": "RealEstateAgent",
       "@id": "https://davepattonrealty.com/#patton-real-estate",
@@ -117,25 +107,26 @@
       },
       "image": "https://davepattonrealty.com/images/office.jpg",
       "description": "Patton Real Estate, affiliated with KW Hoover (Keller Williams), specializes in residential real estate and senior housing transitions in the greater Birmingham and Hoover, Alabama area. Led by Dave Patton, one of Alabama's only two Certified Senior Housing Professionals.",
-      "telephone": "[PHONE]",
-      "email": "[EMAIL]",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1021 Brocks Gap Pkwy",
         "addressLocality": "Hoover",
         "addressRegion": "AL",
-        "postalCode": "[ZIP]",
         "addressCountry": "US"
       },
       "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "[LAT]",
-        "longitude": "[LNG]"
+        "@type": "GeoCoordinates"
       },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "09:00",
           "closes": "17:00"
         }
@@ -144,12 +135,18 @@
         {
           "@type": "City",
           "name": "Hoover",
-          "containedInPlace": {"@type": "State", "name": "Alabama"}
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Alabama"
+          }
         },
         {
           "@type": "City",
           "name": "Birmingham",
-          "containedInPlace": {"@type": "State", "name": "Alabama"}
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Alabama"
+          }
         },
         {
           "@type": "Place",

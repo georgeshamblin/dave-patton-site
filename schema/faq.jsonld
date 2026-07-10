@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "name": "Dave Patton Real Estate — Frequently Asked Questions",
+  "name": "Dave Patton Real Estate \u2014 Frequently Asked Questions",
   "mainEntity": [
     {
       "@type": "Question",
@@ -16,7 +16,7 @@
       "name": "Does Dave Patton specialize only in senior real estate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Dave serves the full residential market across Hoover and greater Birmingham, Alabama. However, his deepest expertise, professional certifications, and personal mission center on seniors and senior housing transitions — helping older adults downsize, move to assisted living, or transition to family caregiver arrangements."
+        "text": "No. Dave serves the full residential market across Hoover and greater Birmingham, Alabama. However, his deepest expertise, professional certifications, and personal mission center on seniors and senior housing transitions \u2014 helping older adults downsize, move to assisted living, or transition to family caregiver arrangements."
       }
     },
     {
@@ -48,7 +48,7 @@
       "name": "Does Dave offer seminars or educational events?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Dave leads in-person seminars and workshops for seniors, adult children, and family caregivers covering the real estate side of senior life transitions — what to expect, how to prepare, and how to make decisions with clarity."
+        "text": "Yes. Dave leads in-person seminars and workshops for seniors, adult children, and family caregivers covering the real estate side of senior life transitions \u2014 what to expect, how to prepare, and how to make decisions with clarity."
       }
     },
     {
@@ -56,7 +56,7 @@
       "name": "What brokerage does Dave Patton work with?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dave operates under a dual brand — Patton Real Estate and KW Hoover (Keller Williams) — out of his office at 1021 Brocks Gap Pkwy, Hoover, Alabama."
+        "text": "Dave operates under a dual brand \u2014 Patton Real Estate and KW Hoover (Keller Williams) \u2014 out of his office at 1021 Brocks Gap Pkwy, Hoover, Alabama."
       }
     }
   ]
